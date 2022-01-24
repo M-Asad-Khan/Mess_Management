@@ -1,7 +1,7 @@
 {
-  "name": "react-webpack-kit",
+  "name": "mess management system",
   "version": "1.0.0",
-  "description": "a boiler plate for creating react applications bundled by webpack",
+  "description": "mess management system",
   "main": "src/js/app.js",
   "scripts": {
     "dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.dev.js",
@@ -34,7 +34,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "css-loader": "^0.28.9",
     "extract-text-webpack-plugin": "^3.0.2",
-    "node-sass": "^4.7.2",
+    "node-sass": "^6.0.1",
     "react-hot-loader": "^3.1.3",
     "sass-loader": "^6.0.6",
     "webpack": "^3.10.0",
