@@ -12,6 +12,7 @@
   },
   "homepage": "https://github.com/temilaj/react-webpack-starter",
   "repository": "https://github.com/temilaj/react-webpack-starter.git",
+  "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
   "keywords": [
     "react",
     "webpack",
@@ -19,13 +20,16 @@
     "react starter",
     "react boilerplate"
   ],
-  "author": "Temi Lajumoke <temi@temilajumoke.com> (http://temilajumoke.com)",
+  "author": "Asad khan",
   "license": "MIT",
   "dependencies": {
     "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
+    "bootstrap": "^5.1.3",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3"
+    "react-dom": "^16.6.3",
+    "react-router-dom": "^6.2.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
