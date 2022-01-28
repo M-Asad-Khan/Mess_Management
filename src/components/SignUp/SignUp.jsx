@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import Buttonfield from "../Atoms/Buttons/CustomeButtons";
 import Textfield from "../Atoms/TextField/CustomeTextField";
+import { RootContext } from "../ContextAPI/RootContext";
 
 const Signup = () => {
   const [name, setFullname] = useState("");
   const [username, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const {usersData,setUsersData} = useContext(RootContext);
   return (
     <div className="display-flex">
           <div className="signupContainer">
@@ -47,6 +49,7 @@ const Signup = () => {
             <div className="actionsContainer">
               <Buttonfield fieldValue="Sign Up" id="signup" type="primary" />
             </div>
+            {usersData}
           </div>
     </div>
   );

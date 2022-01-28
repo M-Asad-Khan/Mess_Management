@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Textfield from "../Atoms/TextField/CustomeTextField";
-import Buttonfield from "../Atoms/Buttons/CustomeButtons";
+// import Buttonfield from "../Atoms/Buttons/CustomeButtons";
 
 const login = () => {
   const [userName, setUserName] = useState("");
@@ -35,7 +35,7 @@ const login = () => {
           />
           <br />
           <br />
-          <Buttonfield fieldValue="Login" id="Login_button" type="primary" />
+          {/* <Buttonfield fieldValue="Login" id="Login_button" type="primary" /> */}
         </div>
       </div>
     </div>
