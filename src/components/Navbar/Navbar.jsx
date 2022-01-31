@@ -1,38 +1,130 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
+import styles from "./Navbar.module.scss";
+import Sidebar from "../Sidebar";
+import {
+  makeStyles,
+  Dialog,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  CloseIcon,
+  Slide,
+  Menu,
+  MenuItem,
+  Avatar
+} from '@material-ui/core';
+import { useNavigate } from "react-router-dom";
+
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    position: 'relative',
+  },
+  title: {
+    marginLeft: theme.spacing(2),
+    flex: 1,
+  },
+}));
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function Navbar() {
 
+  const classes = useStyles();
+  const [modalOpen, setModalOpen] = useState(false)
+  const [anchorEl, setMenu] = useState(null);
+  let navigate = useNavigate();
+
+  const handleClickOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleClose = () => {
+    setModalOpen(false);
+  };
+
+
+  const handleClick = (event) => {
+    setMenu(event.currentTarget);
+  };
+
+  const handleCloseMenu = () => {
+    setMenu(null);
+  };
+
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="#">Mess Management System</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
-            </button>
+      <div className='container'>
+        <div>
+          {/* <img
+            className='logo'
+            width="150px"
+            src="../../../../Downloads/111.jpeg"
+            alt="image not found"
+            onClick={() => { navigate('/dashboard') }}
+          /> */}
+          <Avatar>M</Avatar>
+        </div>
+        <h2 className='mlAuto'> Mess Management System</h2>
+        <div className='mlAuto'>
+          <img
+            className='logo'
+            width="40px"
+            src="src/assets/images/profile.svg"
+            alt="image not found"
+            onClick={handleClick}
+          />
+        </div>
+        <Menu
+          id="simple-menu"
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleCloseMenu}
+          className='menuPosition'
+        >
 
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto">
-                <li className="nav-item active">
-                  <a className="nav-link" href="#">Home</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Mess</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Expenses</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Meal</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Calculations</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Login</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+          <MenuItem
+            onClick={() => {
+              handleCloseMenu()
+              navigate('/change_password')
+            }}
+          >
+            <span className='subMenuSpan'>Change Password</span>
+          </MenuItem>
+
+          <MenuItem
+            onClick={() => {
+              handleCloseMenu()
+              localStorage.removeItem('username')
+              localStorage.removeItem('isAdmin')
+              navigate('/login')
+            }}>
+            <span className='subMenuSpan'>Logout</span>
+          </MenuItem>
+
+        </Menu>
+      </div>
+
+      <div>
+        <Dialog fullScreen open={modalOpen} className='sidebar' onClose={handleClose} TransitionComponent={Transition}>
+          <AppBar className={classes.appBar}>
+            <Toolbar>
+              <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+                <CloseIcon />
+              </IconButton>
+              <Typography variant="h6" className={classes.title}>
+                Sidebar
+              </Typography>
+            </Toolbar>
+          </AppBar>
+          <Sidebar fromNavbar={true} setModalOpen={setModalOpen} />
+        </Dialog>
+      </div>
     </div>
+
   );
 }

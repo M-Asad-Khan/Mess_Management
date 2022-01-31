@@ -16,7 +16,7 @@ const Textfield = ({
 
   return (
     <TextField
-      className={clasname}
+      className={classname}
       id={id}
       label={label}
       type={type}
