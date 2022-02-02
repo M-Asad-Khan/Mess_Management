@@ -1,7 +1,7 @@
 import React,{useEffect} from "react";
 import Button from "@material-ui/core/Button";
 
-const Buttonfield = ({ fieldValue, onchangefunction,id,type }) => {
+const Buttonfield = ({ fieldValue, onchangefunction,id,type,className }) => {
 
 
 
@@ -11,7 +11,7 @@ const Buttonfield = ({ fieldValue, onchangefunction,id,type }) => {
     color={type}
     onClick={onchangefunction}
     variant="contained"
-    // color="primary"
+    className={className}
   >
     {fieldValue}
   </Button>
