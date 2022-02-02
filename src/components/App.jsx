@@ -5,14 +5,14 @@ import NavBar from './Navbar/Navbar';
 import RootContext from './ContextAPI/RootContext';
 //import Routes from '../Routes/Routes';
 
-const App = () => (
+const App = () => {
+  return (
   <div>
-        <NavBar />
     <RootContext>
         <SignUp />
     </RootContext>
   </div>
 );
-
+}
 
 export default App;

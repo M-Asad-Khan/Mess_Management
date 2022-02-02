@@ -1,36 +1,44 @@
+.mainAddMember{
+   background-image: url("https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+   height: 100vh;
+   background-size: cover;
+    overflow: hidden;
+
+}
 .signupContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  max-width: 496px;
-  margin: auto;
+    display: flex;
+    flex-direction: column;
+    margin: auto !important;
+    background-color: white !important;
+    padding: 10px !important;
   .signup-heading {
-      color: #000000;
-      font-family: Poppins;
-      font-size: 33px;
-      font-weight: 500;
-      letter-spacing: 0;
-      line-height: 50px;
-      margin-bottom: 37px;
+    background-color: rgb(57, 150, 54) !important;
+    font-size: large;
+    color: white;
+    font-weight: 700;
+    display: flex;
+    min-height: 40px;
+    width: 100%;
+    justify-content: center;
+    padding-top: 5px;
   }
   .actionsContainer {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-      button {
-          width: 172px;
-          height: 53px;
-          border-radius: 25px;
-          font-size: 19px;
-          font-weight: 500;
-          padding-left: 40px;
-          padding-right: 40px;
-          padding-top: 10px;
-          padding-bottom: 10px;
-          text-transform: capitalize;
-      }
+        display: flex;
+        width: 50%;
+        background-color: #008b69!important;
+        color: #fdfeff !important;
+        margin:8px auto 0px;
   }
+  .fieldDiv{
+    width: 80% !important;
+    margin: auto;
+    color: white !important;
+    margin: 0px  auto 0 !important;
+  }
+  label{
+    margin: 10px 0px 4px 60px !important;
 
+  }
 
 @media not all and (min-resolution: 0.001dpcm) {
   @supports (-webkit-appearance: none) {

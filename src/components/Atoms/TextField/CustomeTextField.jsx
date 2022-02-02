@@ -7,18 +7,14 @@ const Textfield = ({
   label,
   type,
   id,
-  clasname,
+  className,
   variant,
 }) => {
-  useEffect(() => {
-    console.log("component render");
-  }, [fieldValue]);
-
   return (
     <TextField
-      className={classname}
+      className={className}
       id={id}
-      label={label}
+      placeholder={label}
       type={type}
       variant={variant}
       value={fieldValue}

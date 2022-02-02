@@ -1,34 +1,50 @@
-import React from "react";
-import { useHistory, Link } from "react-router-dom";
+import React, { useContext } from "react";
+
+import { useNavigate } from "react-router-dom";
+import { RootContext } from "../ContextAPI/RootContext";
 
 const Sidebar = () => {
-
-
+  let navigate = useNavigate();
+  const { setCurrentUrl } = useContext(RootContext);
   return (
-    // <div className="sidebarContainer">
-    //   <div className="optionsContainer">
-    //     <p className="options">Dashboard</p >
-    //   </div>
-    // </div>
     <div>
-
-      <div>
-        <div className='dashboardDiv'
+      <div className="sideBarMAinDiv">
+        <div
+          className="dashboardDiv"
           onClick={() => {
-            history.push('/dashboard')
-            setModalOpen(false)
+            navigate("/dashboard");
           }}
         >
-          <img
-            className='dashboardSvg'
-            src="src/assets/images/profile.svg"
-            alt="image not found"
-          />
-          <span className='dashboardText'>Dashboard</span>
+          <span className="dashboardText">Dashboard</span>
+        </div>
+        <div
+          className="dashboardDiv"
+          onClick={() => {
+            navigate("/add-member");
+          }}
+        >
+          <span className="dashboardText">Add Member</span>
+        </div>
+        <div
+          className="dashboardDiv"
+          onClick={() => {
+            navigate("/mess-details");
+          }}
+        >
+          <span className="dashboardText">Mess Calculations</span>
+        </div>
+        <div
+          className="dashboardDiv"
+          onClick={() => {
+            setCurrentUrl(window.location.href);
+            navigate("/login");
+          }}
+        >
+          <span className="dashboardText">Logout</span>
         </div>
       </div>
-    </div >
+    </div>
   );
-}
+};
 
 export default Sidebar;

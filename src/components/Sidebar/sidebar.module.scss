@@ -1,3 +1,9 @@
+.sideBarMAinDiv{
+  background-color: #f8f9fa !important;
+  height: calc(100vh - 4em);
+  overflow-x: auto;
+  display: block;
+}
 .container,
 .fromNavContainer {
   background-color: #fff;
@@ -23,7 +29,7 @@
 .dashboardTextSubMenu {
   margin-top: 2px;
   margin-left: 10px;
-  color: #939fad;
+  color: #fefeff;
   font-size: 15px;
 }
 .dashboardSvgSubMenu {
@@ -37,7 +43,7 @@
 .dashboardText {
   margin-top: 2px;
   margin-left: 10px;
-  color: #939fad;
+  color: #0a0b0c;
   font-size: 30px;
 }
 .dashboardSubMenuDiv:hover {
@@ -50,7 +56,6 @@
 
 .dashboardDiv:hover {
   .dashboardSvg,
-  .dashboardText,
   .collapseSvg {
     fill: black;
     color: black;

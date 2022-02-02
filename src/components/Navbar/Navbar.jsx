@@ -15,11 +15,11 @@ import {
   Avatar
 } from '@material-ui/core';
 import { useNavigate } from "react-router-dom";
-
+import { RootContext } from "../ContextAPI/RootContext";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    position: 'relative',
+    position: "relative",
   },
   title: {
     marginLeft: theme.spacing(2),
@@ -32,12 +32,11 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Navbar() {
-
   const classes = useStyles();
-  const [modalOpen, setModalOpen] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false);
   const [anchorEl, setMenu] = useState(null);
   let navigate = useNavigate();
-
+  const { usersData, setUsersData } = useContext(RootContext);
   const handleClickOpen = () => {
     setModalOpen(true);
   };
@@ -46,8 +45,8 @@ export default function Navbar() {
     setModalOpen(false);
   };
 
-
   const handleClick = (event) => {
+    debugger;
     setMenu(event.currentTarget);
   };
 
@@ -57,63 +56,28 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className='container'>
-        <div>
-          {/* <img
-            className='logo'
-            width="150px"
-            src="../../../../Downloads/111.jpeg"
-            alt="image not found"
-            onClick={() => { navigate('/dashboard') }}
-          /> */}
-          <Avatar>M</Avatar>
+      <div className="container">
+        <h2 className="mlAuto"> Mess Management System</h2>
+        <div className="mlAuto">
         </div>
-        <h2 className='mlAuto'> Mess Management System</h2>
-        <div className='mlAuto'>
-          <img
-            className='logo'
-            width="40px"
-            src="src/assets/images/profile.svg"
-            alt="image not found"
-            onClick={handleClick}
-          />
-        </div>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleCloseMenu}
-          className='menuPosition'
-        >
-
-          <MenuItem
-            onClick={() => {
-              handleCloseMenu()
-              navigate('/change_password')
-            }}
-          >
-            <span className='subMenuSpan'>Change Password</span>
-          </MenuItem>
-
-          <MenuItem
-            onClick={() => {
-              handleCloseMenu()
-              localStorage.removeItem('username')
-              localStorage.removeItem('isAdmin')
-              navigate('/login')
-            }}>
-            <span className='subMenuSpan'>Logout</span>
-          </MenuItem>
-
-        </Menu>
       </div>
 
       <div>
-        <Dialog fullScreen open={modalOpen} className='sidebar' onClose={handleClose} TransitionComponent={Transition}>
+        <Dialog
+          fullScreen
+          open={modalOpen}
+          className="sidebar"
+          onClose={handleClose}
+          TransitionComponent={Transition}
+        >
           <AppBar className={classes.appBar}>
             <Toolbar>
-              <IconButton edge="start" color="inherit" onClick={handleClose} aria-label="close">
+              <IconButton
+                edge="start"
+                color="inherit"
+                onClick={handleClose}
+                aria-label="close"
+              >
                 <CloseIcon />
               </IconButton>
               <Typography variant="h6" className={classes.title}>
@@ -125,6 +89,5 @@ export default function Navbar() {
         </Dialog>
       </div>
     </div>
-
   );
 }
