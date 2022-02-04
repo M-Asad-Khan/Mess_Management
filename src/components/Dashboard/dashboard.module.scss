@@ -58,6 +58,7 @@
   margin-top: 10px;
   padding-top: 10px;
   cursor: pointer;
+  
 }
 .card:hover {
   .cardLeaves,
@@ -71,7 +72,8 @@
   //background-color: #446d32 !important;
   border-radius: 5px;
   width: 100%;
-  box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.2);
+  background-color: rgba(71, 112, 71, 0.4);
+
 }
 .cardHeaderText {
   background-color: rgb(57, 150, 54) !important;
@@ -183,17 +185,17 @@ td {
   margin-right: auto !important;
 }
 .mainAddDeposite{
+  width: 40% !important;
   display: flex;
   flex-direction: column;
   margin: auto !important;
   background-color: white !important;
-  padding: 10px !important;
+  padding-bottom: 10px !important;
   .menu-Action-button{
     width: 50%;
     margin:auto !important;
     background-color: #008b69!important;
     color: #fdfeff !important;
-    margin: auto;
 
   }
   .fieldDiv{
@@ -203,7 +205,15 @@ td {
     margin-bottom: 10px !important;
   }
   label{
-    margin: 10px 0px 4px 60px !important;
+    margin: 10px 0px 4px 40px !important;
 
   }
+}
+
+.viewMember{
+  background-image: url("https://images.pexels.com/photos/3184183/pexels-photo-3184183.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  min-height: 81vh;
+  background-size: cover;
+  overflow: hidden !important;
+  padding: 40px;
 }

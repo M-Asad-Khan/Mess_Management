@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -9,16 +9,42 @@ import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 const MessCalculation = () => {
-  const [memberName, setMemberName] = useState([
-    "Asad khan",
-    "Ali",
-    "Abbas",
-    "Hamza",
-    "Haris",
-    "Adil",
-    "Arslan",
-    "Jawad",
-  ]);
+  const [memberList, setMemberList] = useState();
+  const [errorMessage, setErrormessage] = useState("");
+  const MembersList = () => {
+    debugger;
+    try {
+      debugger;
+      fetch("http://localhost:8080/users", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          "Access-Control-Allow-Origin": "*",
+          mode: "no-cors",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Success:", data);
+
+          if (data.statusCode === 400) {
+            setErrormessage(data.message);
+          } else {
+            setMemberList(data.data);
+          }
+        })
+        .catch((error) => {
+          debugger;
+          console.error("Error:", error);
+        });
+    } catch (err) {
+      debugger;
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    MembersList();
+  }, []);
   const [dailAmount, setDailyAmount] = useState([
     "200",
     "200",
@@ -39,11 +65,14 @@ const MessCalculation = () => {
                 <TableHead className="tableHeader">
                   <TableRow>
                     <TableCell className="TableCell">Title</TableCell>
-                    {memberName.map((user, id) => {
-                      return (
-                        <TableCell className="TableCell">{user}</TableCell>
-                      );
-                    })}
+                    {memberList &&
+                      memberList.map((user, id) => {
+                        return (
+                          <TableCell className="TableCell">
+                            {user.Fname} {user.Lname}
+                          </TableCell>
+                        );
+                      })}
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -51,49 +80,59 @@ const MessCalculation = () => {
                     <TableCell component="th" scope="row" className="nameCells">
                       Carry Forward
                     </TableCell>
-                    {memberName.map((row) => {
-                      return <TableCell className="subCells">2000</TableCell>;
-                    })}
+                    {memberList &&
+                      memberList.map((row) => {
+                        return (
+                          <TableCell className="subCells">
+                            {row.Balance}
+                          </TableCell>
+                        );
+                      })}
                   </TableRow>
                   <TableRow>
                     <TableCell component="th" scope="row" className="nameCells">
                       Individual Deposit
                     </TableCell>
-                    {memberName.map((row) => {
-                      return <TableCell className="subCells">2000</TableCell>;
-                    })}
+                    {memberList &&
+                      memberList.map((row) => {
+                        return <TableCell className="subCells">2000</TableCell>;
+                      })}
                   </TableRow>
                   <TableRow>
                     <TableCell component="th" scope="row" className="nameCells">
                       Devbox Deposit
                     </TableCell>
-                    {memberName.map((row) => {
-                      return <TableCell className="subCells">1000</TableCell>;
-                    })}
+                    {memberList &&
+                      memberList.map((row) => {
+                        return <TableCell className="subCells">1000</TableCell>;
+                      })}
                   </TableRow>
                   <TableRow>
                     <TableCell component="th" scope="row" className="nameCells">
                       Total Deposite
                     </TableCell>
-                    {memberName.map((row) => {
-                      return <TableCell className="subCells">5000</TableCell>;
-                    })}
+                    {memberList &&
+                      memberList.map((row) => {
+                        return <TableCell className="subCells">5000</TableCell>;
+                      })}
                   </TableRow>
                   <TableRow>
                     <TableCell component="th" scope="row" className="nameCells">
                       Expense (Rs)
                     </TableCell>
-                    {memberName.map((row) => {
-                      return <TableCell className="subCells">1000</TableCell>;
-                    })}
+                    {memberList &&
+                      memberList.map((row) => {
+                        return <TableCell className="subCells">1000</TableCell>;
+                      })}
                   </TableRow>
                   <TableRow>
                     <TableCell component="th" scope="row" className="nameCells">
                       Balance
                     </TableCell>
-                    {memberName.map((row) => {
-                      return <TableCell className="subCells">4000</TableCell>;
-                    })}
+                    {memberList &&
+                      memberList.map((row) => {
+                        return <TableCell className="subCells">4000</TableCell>;
+                      })}
                   </TableRow>
                   <TableRow>
                     <TableCell component="th" scope="row" className="nameCells">

@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Layout from "../components/Layout";
 import { RootContext } from "../components/ContextAPI/RootContext";
 import MessCalculation from "../components/MessCalculations";
+import ViewAllMembers from "../components/Member/View All Members/index";
 
 import { Route, Routes, Redirect, BrowserRouter } from "react-router-dom";
 import Dashboard from "../components/Dashboard/Dashboard";
@@ -45,6 +46,15 @@ function Routesd() {
           element={
             <Layout>
               <Signup />
+            </Layout>
+          }
+        ></Route>
+        <Route
+          exact
+          path="/members_list"
+          element={
+            <Layout>
+              <ViewAllMembers />
             </Layout>
           }
         ></Route>
