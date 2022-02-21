@@ -7,19 +7,38 @@
   overflow: hidden;
 }
 .mainDiv{
-  width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  padding-top: 170px;
-  //background-image: url('https://www.pexels.com/photo/assorted-sliced-fruits-in-white-ceramic-bowl-1092730/');
+  width: 30%;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 25px;
+  background-color: rgba(59, 58, 58, 0.4);
+  box-shadow: 1px 8px 20px grey;
+  -webkit-transition: box-shadow 0.3s ease-in;
+  .login-button{
+    display: flex;
+    width: 50%;
+    background-color: #008b69!important;
+    color: #fdfeff !important;
+    margin:10px auto ;
+    margin-bottom: 50px;
+  }
+  .login-fields-Width {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin:50px auto;
+    justify-content: center;
+  }
+  .MuiInput-underline::after{
+    border: none !important;
+  }
+  .MuiInputBase-input{
+    color: white !important;
+  }
 }
-.login-text {
-  padding: 10px 0px;
-  color: white;
-}
-.login-fields-Width {
-  width: 100%;
-}
+
 .login-heading {
   margin-left: auto;
   margin-right: auto;

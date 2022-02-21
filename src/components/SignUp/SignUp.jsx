@@ -6,6 +6,7 @@ import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Grid from "@material-ui/core/Grid";
+import { useNavigate } from "react-router";
 
 const Signup = () => {
   const [fname, setFirstName] = useState("");
@@ -19,7 +20,8 @@ const Signup = () => {
   const [genderTypes, setGenderTypesNames] = useState(["Male", "Female"]);
   const [userType, setUserType] = useState(["true", "false"]);
   const [errorMessage, setErrormessage] = useState("");
-  // const {usersData,setUsersData} = useContext(RootContext);
+  const [todayDate, setTodayDate] = useState();
+  let navigate = useNavigate();
   const UserSignUp = () => {
     debugger;
     try {
@@ -39,6 +41,7 @@ const Signup = () => {
           password: password,
           username: username,
           Balance: balance,
+          date: todayDate,
         }),
       })
         .then((response) => response.json())
@@ -48,7 +51,7 @@ const Signup = () => {
           if (data.statusCode === 400) {
             setErrormessage(data.message);
           } else {
-            navigate("/dashboard");
+            navigate("/members_list");
           }
         })
         .catch((error) => {
@@ -62,119 +65,133 @@ const Signup = () => {
   };
   return (
     <div className="mainAddMember">
-        <Grid item xs={10}>
-          <p className="errorText">{errorMessage ? errorMessage : " "}</p>
-        </Grid>
-        <Grid item xs={12} sm={12} md={8} className="signupContainer">
-            <div className="signup-heading">Add new Member</div>
-            <FormControl fullWidth>
-            <label>First name</label>
-            <Textfield
-              id="outlined-basic"
-              label="enter first name"
-              onChangeFunction={(e) => setFirstName(e.target.value)}
-              variant="standard"
-              type="text"
-              className="fieldDiv"
-              fieldValue={fname}
-            />
-            </FormControl>
-            <FormControl fullWidth>
-            <label>Last name</label>
-            <Textfield
-              id="outlined-basic"
-              label="enter last name"
-              onChangeFunction={(e) => setLastName(e.target.value)}
-              variant="standard"
-              type="text"
-              className="fieldDiv"
-              fieldValue={lname}
-            />
-            </FormControl>
-            <FormControl fullWidth>
-            <label>Gender</label>
-              <TextField
-                id="questions"
-                fullWidth
-                size="small"
-                label="select gender"
-                variant="standard"
-                className="fieldDiv"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-                menuprops={{ variant: "menu" }}
-                select
-              >
-                {genderTypes.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </FormControl>
-            <FormControl fullWidth>
-            <label>IsAdmin</label>
-              <TextField
-                id="questions"
-                fullWidth
-                size="small"
-                label="select user type"
-                variant="standard"
-                className="fieldDiv"
-                value={isAdmin}
-                onChange={(e) => setIsAdmin(e.target.value)}
-                menuprops={{ variant: "menu" }}
-                select
-              >
-                {userType.map((option) => (
-                  <MenuItem key={option} value={option}>
-                    {option}
-                  </MenuItem>
-                ))}
-              </TextField>
-            </FormControl>
-            <FormControl fullWidth>
-            <label>Email</label>
-            <Textfield
-              id="outlined-basic"
-              label="enter email e.g(abcd@gmail.com)"
-              onChangeFunction={(e) => setEmail(e.target.value)}
-              variant="standard"
-              type="text"
-              className="fieldDiv"
-              fieldValue={username}
-            />
-            </FormControl>
-            <FormControl fullWidth>
-            <label>Balance</label>
-            <Textfield
-              id="outlined-basic"
-              label="enter initial balance"
-              onChangeFunction={(e) => setBalance(e.target.value)}
-              variant="standard"
-              type="text"
-              className="fieldDiv"
-              fieldValue={balance}
-            />
-            </FormControl>
-            <FormControl fullWidth>
-            <label>Password</label>
-            <Textfield
-              id="outlined-basic"
-              label="enter password"
-              onChangeFunction={(e) => setPassword(e.target.value)}
-              variant="standard"
-              type="password"
-              className="fieldDiv"
-              fieldValue={password}
-            />
-            </FormControl>
+      <Grid item xs={10}>
+        <p className="errorText">
+          {errorMessage ? errorMessage : " "}
+        </p>
+      </Grid>
+      <Grid item xs={12} sm={12} md={8} className="signupContainer">
+        <div className="signup-heading">Add new Member</div>
+        <FormControl fullWidth>
+          <label>First name</label>
+          <Textfield
+            id="outlined-basic"
+            onChangeFunction={(e) => setFirstName(e.target.value)}
+            variant="standard"
+            type="text"
+            className="fieldDiv"
+            fieldValue={fname}
+          />
+        </FormControl>
+        <FormControl fullWidth>
+          <label>Last name</label>
+          <Textfield
+            id="outlined-basic"
+            onChangeFunction={(e) => setLastName(e.target.value)}
+            variant="standard"
+            type="text"
+            className="fieldDiv"
+            fieldValue={lname}
+          />
+        </FormControl>
+        <FormControl fullWidth>
+          <label>Gender</label>
+          <TextField
+            id="questions"
+            fullWidth
+            size="small"
+            variant="standard"
+            className="fieldDiv"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            menuprops={{ variant: "menu" }}
+            select
+          >
+            {genderTypes.map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>
+        </FormControl>
+        <FormControl fullWidth>
+          <label>IsAdmin</label>
+          <TextField
+            id="questions"
+            fullWidth
+            size="small"
+            variant="standard"
+            className="fieldDiv"
+            value={isAdmin}
+            onChange={(e) => setIsAdmin(e.target.value)}
+            menuprops={{ variant: "menu" }}
+            select
+          >
+            {userType.map((option) => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>
+        </FormControl>
+        <FormControl fullWidth>
+          <label>Select Date</label>
+          <TextField
+            className="fieldDiv"
+            id="date"
+            type="date"
+            variant="standard"
+            value={todayDate}
+            onChange={(e) => setTodayDate(e.target.value)}
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
+        </FormControl>
+        <FormControl fullWidth>
+          <label>Email</label>
+          <Textfield
+            id="outlined-basic"
+            onChangeFunction={(e) => setEmail(e.target.value)}
+            variant="standard"
+            type="email"
+            className="fieldDiv"
+            fieldValue={username}
+          />
+        </FormControl>
+        <FormControl fullWidth>
+          <label>Balance</label>
+          <Textfield
+            id="outlined-basic"
+            onChangeFunction={(e) => setBalance(e.target.value)}
+            variant="standard"
+            type="number"
+            className="fieldDiv"
+            fieldValue={balance}
+          />
+        </FormControl>
+        <FormControl fullWidth>
+          <label>Password</label>
+          <Textfield
+            id="outlined-basic"
+            onChangeFunction={(e) => setPassword(e.target.value)}
+            variant="standard"
+            type="password"
+            className="fieldDiv"
+            fieldValue={password}
+          />
+        </FormControl>
 
-            <div  onClick={UserSignUp}>
-              <Buttonfield fieldValue="Add" id="signup" type="primary" className="actionsContainer" />
-            </div>
-       </Grid>
-      </div>
+        <div onClick={UserSignUp}>
+          <Buttonfield
+            fieldValue="Add"
+            id="signup"
+            type="primary"
+            className="actionsContainer"
+          />
+        </div>
+      </Grid>
+    </div>
   );
 };
 

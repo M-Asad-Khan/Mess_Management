@@ -1,16 +1,20 @@
 .mainAddMember{
    background-image: url("https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-   height: 100vh;
+   height: 91.6vh;
    background-size: cover;
-    overflow: hidden;
+  overflow: hidden !important;
 
 }
 .signupContainer {
     display: flex;
     flex-direction: column;
     margin: auto !important;
-    background-color: white !important;
-    padding: 10px !important;
+    background-color: rgba(7, 6, 6, 0.767);
+    box-shadow: 1px 8px 20px grey;
+    -webkit-transition: box-shadow 0.3s ease-in;
+    padding-bottom: 10px !important;
+    color: white !important;
+    border-radius: 30px;
   .signup-heading {
     background-color: rgb(57, 150, 54) !important;
     font-size: large;
@@ -33,11 +37,16 @@
     width: 80% !important;
     margin: auto;
     color: white !important;
-    margin: 0px  auto 0 !important;
   }
   label{
     margin: 10px 0px 4px 60px !important;
 
+  }
+  .MuiInput-underline::after{
+    border: none !important;
+  }
+  .MuiInputBase-input{
+    color: white !important;
   }
 
 @media not all and (min-resolution: 0.001dpcm) {

@@ -14,9 +14,7 @@ const login = () => {
   setCurrentUrl(window.location.href);
 
   const UserLogin = () => {
-    debugger;
     try {
-      debugger;
       fetch("http://localhost:8080/users/login", {
         method: "POST",
         headers: {
@@ -33,31 +31,29 @@ const login = () => {
         .then((data) => {
           console.log("Success:", data);
 
-          // if (data.statusCode === 404) {
-          //   setErrormessage(data.message);
-          // } else {
-          //   setUsersData(data);
-          //   navigate("/dashboard");
-          // }
+          if (data.statusCode === 404) {
+            setErrormessage(data.message);
+          } else {
+            setUsersData(data);
+            navigate("/dashboard");
+          }
         })
         .catch((error) => {
-          debugger;
           console.error("Error:", error);
         });
     } catch (err) {
-      debugger;
       console.log(error);
     }
   };
   return (
-      <div className="loginContainer">
-        <div className="mainDiv">
-          <Grid item xs={10}>
-            <p className="errorText">
-              {errorMessage.length > 1 ? errorMessage : " "}
-            </p>
-          </Grid>
-          <p className="login-text"> Username </p>
+    <div className="loginContainer">
+      <div className="mainDiv">
+        <Grid item xs={10}>
+          <p className="errorText">
+            {errorMessage.length > 1 ? errorMessage : " "}
+          </p>
+        </Grid>
+        <Grid item xs={12} sm={12} md={12}>
           <Textfield
             className="login-fields-Width"
             fieldValue={userName}
@@ -67,7 +63,6 @@ const login = () => {
             id="login-username"
             variant="standard"
           />
-          <p className="login-text"> Password </p>
           <Textfield
             className="login-fields-Width"
             fieldValue={password}
@@ -77,17 +72,21 @@ const login = () => {
             id="login-password"
             variant="standard"
           />
-          <br />
-          <br />
           <div
             onClick={() => {
               UserLogin();
             }}
           >
-            <Buttonfield fieldValue="Login" id="Login_button" type="primary" />
+            <Buttonfield
+              fieldValue="Login"
+              id="Login_button"
+              type="primary"
+              className="login-button"
+            />
           </div>
-        </div>
+        </Grid>
       </div>
+    </div>
   );
 };
 

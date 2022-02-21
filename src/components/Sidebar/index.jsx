@@ -28,11 +28,21 @@ const Sidebar = () => {
         <div
           className="dashboardDiv"
           onClick={() => {
+            setCurrentUrl(window.location.href);
+            navigate("/members_list");
+          }}
+        >
+          <span className="dashboardText">View Member</span>
+        </div>
+        <div
+          className="dashboardDiv"
+          onClick={() => {
             navigate("/mess-details");
           }}
         >
           <span className="dashboardText">Mess Calculations</span>
         </div>
+
         <div
           className="dashboardDiv"
           onClick={() => {
